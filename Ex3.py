@@ -5,10 +5,10 @@ print(response_without_method.text)
 #Результат: Wrong method provided
 
 payload = {"method": "HEAD"}
-response_head = requests.get('https://playground.learnqa.ru/ajax/api/compare_query_type',
+response_head = requests.head('https://playground.learnqa.ru/ajax/api/compare_query_type',
                                        params=payload)
 print(response_head.text)
-#Результат: Wrong method provided
+#Результат: пустой ответ
 
 payload = {"method": "GET"}
 response_get = requests.get('https://playground.learnqa.ru/ajax/api/compare_query_type',
