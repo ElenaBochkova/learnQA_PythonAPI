@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 from requests import Response
 
@@ -10,7 +11,7 @@ class BaseCase:
 
     def get_header(self, response: Response, headers_name):
         assert headers_name in response.headers, f"Cannot find header with the name {headers_name} in the last response"
-        return  response.headers[headers_name]
+        return response.headers[headers_name]
 
     def get_json_value(self, response:Response, name):
         try:
@@ -21,3 +22,17 @@ class BaseCase:
         assert name in response_as_dict, f"Response JSON doesn't have key '{name}'"
 
         return response_as_dict[name]
+
+    def prepare_registration_data(self, email=None):
+        if email is None:
+            base_part = 'learn_qa'
+            domain = "example.com"
+            random_part = datetime.now().strftime("%m%d%Y%H%M%S")
+            email = f"{base_part}{random_part}@{domain}"
+        return {
+            'password': '123',
+            'username': 'learnqa',
+            'firstName': 'learnqa',
+            'lastName': 'learnqa',
+            'email': email
+        }
