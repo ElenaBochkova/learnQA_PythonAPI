@@ -4,7 +4,7 @@ from requests import Response
 
 
 class Logger:
-    filename = f"logs\log_" + str(datetime.datetime.now()) + ".log"
+    filename = f"logs/log_" + str(datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")) + ".log"
 
     @classmethod
     def _write_log_to_file(cls, data:str):
