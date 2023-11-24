@@ -43,3 +43,7 @@ class Assertions:
             assert False, f"Response is not in JSON formft. Response text is '{response.text}'"
         for name in names:
             assert name in response_as_dict, f"Response JSON doesn't have key '{name}'"
+
+    @staticmethod
+    def assert_text_response_is(response:Response, text: str):
+        assert response.text == text, f"Response text {response.text} is not equal to {text}"
